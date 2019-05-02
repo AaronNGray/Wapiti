@@ -101,6 +101,7 @@ static void dotrain(mdl_t *mdl) {
 		if (file == NULL)
 			pfatal("cannot open input model file");
 		mdl_load(mdl, file);
+		fclose(file);
 	}
 	// Load the pattern file. This will unlock the database if previously
 	// locked by loading a model.
@@ -196,6 +197,7 @@ static void dolabel(mdl_t *mdl) {
 	if (file == NULL)
 		pfatal("cannot open input model file");
 	mdl_load(mdl, file);
+	fclose(file);
 	// Open input and output files
 	FILE *fin = stdin, *fout = stdout;
 	if (mdl->opt->input != NULL) {
