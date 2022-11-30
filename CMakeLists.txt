@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 2.8)
 project( wapiti )
 
+set(CMAKE_BUILD_TYPE "Release")
+
 set(CMAKE_C_FLAGS "-std=c99")
 
 set(CMAKE_SKIP_BUILD_RPATH FALSE)
