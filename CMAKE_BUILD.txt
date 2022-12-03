@@ -6,10 +6,18 @@ CMake can be used to build a JNI interface for Wapiti and a static Wapiti librar
 4. make
 5. In the build folder there will be a library libwapiti.so or libwapiti.dylib (mac os x)
 
-The library should not contains dynamic dependencies (for portability of the JNI), which can be checked on Linux by the command:
-> ldd libwapiti.so
-
-or on Darwin architecture:
+Or on Darwin/mac os architecture, the library is already portable (no shared libraries needed):
 > otool -L libwapiti.dylib
 
+For linux, the library will contain dynamic dependencies, which can be checked on Linux by the command:
+> ldd libwapiti.so
+
+For portability of the JNI, the libwapiti.so should be shipped with these dependencies in the same directory (the local linking is prioritize). 
+
+In the subdirection build/, execute the provided script to collect the dependencies:
+> ../collect-dependencies.sh libwapiti.so .
+
+The script will copy the required libaries together with libwapiti.so.
+
 The jar file can we found under src/swig.
+
