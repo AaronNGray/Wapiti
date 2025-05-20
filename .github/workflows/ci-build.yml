@@ -81,10 +81,14 @@ jobs:
           cmake ./
           make
 
+      - name: Set OS and ARCH variables
+        run: ls
+        shell: bash
+
       - name: Copy pdfalto executable
         run: |
           mkdir -p output/libwapiti/${{ env.OS }}/${{ env.ARCH }}
-          cp pdfalto output/libwapiti/${{ env.OS }}/${{ env.ARCH }}
+          cp *.so output/libwapiti/${{ env.OS }}/${{ env.ARCH }}
 
       - name: Save pdfalto executable
         uses: actions/upload-artifact@v4
